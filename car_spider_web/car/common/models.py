@@ -20,7 +20,7 @@ class Car(db.Model):
     plan = db.Column(db.String(200))
     purchased = db.Column(db.Integer)
     link = db.Column(db.String(100))
-    status = db.Column(db.Boolean, default=True)
+    status = db.Column(db.String(10), default=1)
     created = db.Column(db.DateTime, default=__now)
     updated = db.Column(db.DateTime, default=__now)
 

@@ -8,12 +8,21 @@ Data:2015-11-14
 import requests
 from bs4 import BeautifulSoup
 from models import Car
+from sqlalchemy import desc
 
 # set utf-8 env
 import sys
 reload(sys)
 sys.setdefaultencoding('utf-8')
 
+
+def get_data_from_db():
+    """
+    从数据库中提取最后20条记录
+    return : Car obj list
+    """
+    car_list = Car.query.order_by(desc(Car.id)).limit(20).all()
+    return car_list
 
 
 def get_content(url=''):
@@ -54,7 +63,7 @@ def get_car_info(info):
     return cars
 
 
-def get_after_price(url):
+def _get_after_price(url):
     """
     由于通过domain/#pvareaid=103414获取汽车当前价格信息时卡了许久，
     所以另外写个def进入产品详情页面获取汽车价格信息。
@@ -84,7 +93,7 @@ def save_data_in_db(data_list):
             befor_price = data.find(id=_befor_str+__tag).text
         else:
             befor_price = ''
-        after_price = get_after_price(link)
+        after_price = _get_after_price(link)
 
         # 获取汽车产品名和规格
         car_title = data.find('div', class_='carbox-title')['title'].split(' ', 1)

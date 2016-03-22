@@ -2,7 +2,9 @@
 
 {% block content %}
 <div class=" col-md-12">
-  <div></div>
+  <h3>热销汽车数据抓取</h3>
+      <small>数据来源: <a href="http://mall.autohome.com.cn/#pvareaid=103414" target="_blank">汽车之家</a></small>
+      <h5 class="text-right"><a href="{{url_for('Common.get_data')}}" class="btn btn-success btn-sm">更新数据</a></h5>
   <table class="table table-hover">
     <thead>
       <tr>
@@ -13,24 +15,22 @@
         <th>优惠价</th>
         <th>优惠方案</th>
         <th>购买记录</th>
-        <th>产品链接</th>
-        <th>创建</th>
-        <th>更新</th>
+        <th>抓取时间</th>
       </tr>
     </thead>
     <tbody>
+        {% for data in data_list | sort(attribute='purchased', reverse=True) %}
       <tr>
-        <td>1</td>
-        <td>1</td>
-        <td>1</td>
-        <td>1</td>
-        <td>1</td>
-        <td>1</td>
-        <td>1</td>
-        <td>1</td>
-        <td>1</td>
-        <td>1</td>
+        <td><span class=" btn-xs  btn btn-primary">{{ data.id }}</span></td>
+        <td>{{ data.logo }}</td>
+        <td><a href={{ data.link }} target="_blank">{{ data.model }}<a></td>
+        <td>{{ data.befor_price }}</td>
+        <td>{{ data.after_price }}</td>
+        <td><abbr title={{ data.plan }}>{{ data.plan[0:10] }}</td>
+        <td>{{ data.purchased }}</td>
+        <td>{{ data.created }}</td>
       </tr>
+        {% endfor %}
     </tbody>
   </table>
 </div>
