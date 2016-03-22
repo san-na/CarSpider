@@ -19,7 +19,7 @@ CREATE TABLE `car_spider`.`car` (
     `befor_price` varchar(100) NOT NULL,
     `after_price` varchar(100) NOT NULL,
     `plan` varchar(500),
-    `Purchased` varchar(100),
+    `Purchased` int(12),
     `link` varchar(255) default "",
     `created` datetime,
     `updated` datetime,

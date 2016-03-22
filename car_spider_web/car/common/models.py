@@ -18,12 +18,11 @@ class Car(db.Model):
     befor_price = db.Column(db.String(200))
     after_price = db.Column(db.String(200))
     plan = db.Column(db.String(200))
-    purchased = db.Column(db.String(100))
+    purchased = db.Column(db.Integer)
     link = db.Column(db.String(100))
     status = db.Column(db.Boolean, default=True)
     created = db.Column(db.DateTime, default=__now)
     updated = db.Column(db.DateTime, default=__now)
-    checked = db.Column(db.BigInteger, default=0)
 
     def __init__(self, logo, model, befor_price, after_price,
                     plan, purchased, link):
@@ -34,14 +33,13 @@ class Car(db.Model):
         self.plan = plan
         self.purchased = purchased
         self.link = link
-        self.lastime = lastime
 
     def __repr__(self):
         return '<User %r>' % self.name
 
     def update(self):
-        dbAlchemy.session.commit()
+        db.session.commit()
 
     def save(self):
-        dbAlchemy.session.add(self)
-        dbAlchemy.session.commit()
+        db.session.add(self)
+        db.session.commit()

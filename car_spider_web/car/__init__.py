@@ -11,7 +11,6 @@ import logging.handlers
 import logging
 
 db = None
-dbAlchemy = None
 
 def create_app():
     global db
