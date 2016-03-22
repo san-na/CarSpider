@@ -16,7 +16,7 @@ class Car(db.Model):
     logo = db.Column(db.String(200),index=True)
     model = db.Column(db.String(200),index=True)
     befor_price = db.Column(db.String(200))
-    after_price = db.Column(db.String(200))
+    after_price = db.Column(db.Integer)
     plan = db.Column(db.String(200))
     purchased = db.Column(db.Integer)
     link = db.Column(db.String(100))

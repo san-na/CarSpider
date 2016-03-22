@@ -11,8 +11,8 @@
         <th>ID</th>
         <th>品牌</th>
         <th>型号</th>
-        <th>原价</th>
-        <th>优惠价</th>
+        <th>原价(万元)</th>
+        <th>优惠价(万元)</th>
         <th>优惠方案</th>
         <th>购买记录</th>
         <th>抓取时间</th>
@@ -24,8 +24,8 @@
         <td><span class=" btn-xs  btn btn-primary">{{ data.id }}</span></td>
         <td>{{ data.logo }}</td>
         <td><a href={{ data.link }} target="_blank">{{ data.model }}<a></td>
-        <td>{{ data.befor_price }}</td>
-        <td>{{ data.after_price }}</td>
+        <td>{{ data.befor_price[1:-1] }}</td>
+        <td>{{ data.after_price / 10000 }}</td>
         <td><abbr title={{ data.plan }}>{{ data.plan[0:10] }}</td>
         <td>{{ data.purchased }}</td>
         <td>{{ data.created }}</td>

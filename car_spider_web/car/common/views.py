@@ -21,7 +21,7 @@ def get_data():
     获取数据
     """
 
-    flash('Please wait a moment.')
+    # flash('Please wait a moment.')
     content = handler.get_content()
     car_info = handler.get_car_info(content.text)
     if handler.save_data_in_db(car_info):
